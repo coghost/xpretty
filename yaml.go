@@ -135,11 +135,3 @@ func PrettyJsonAsYaml(rawJson string, opts ...PrettyOptFunc) {
 	v := MustJsonToYaml(raw)
 	MustPrettyYaml(string(v), opts...)
 }
-
-func IsOk(raw string) bool {
-	if raw == "" {
-		return false
-	} else {
-		return true
-	}
-}

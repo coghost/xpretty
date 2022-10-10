@@ -18,7 +18,7 @@ var Yellowf = color.New(color.FgYellow, color.Bold).SprintfFunc()
 
 var Warnf = color.New(color.FgYellow, color.BgBlack, color.Bold, color.Italic).SprintfFunc()
 
-// red foreground underline
+// Redfu means red foreground with bold underline
 var Redfu = color.New(color.FgRed, color.Bold, color.Underline).SprintfFunc()
 var Redfc = color.New(color.FgRed, color.Bold, color.CrossedOut).SprintfFunc()
 

@@ -28,10 +28,10 @@ func WithColor(b bool) XOptFunc {
 var ctrl = &XOpts{}
 
 // Initialize setups
-//   - color: used in `DummyLog`
-//   - dummyLog: used in `DummyLog`
+//   - color: used for `terminal vivid output`, true by default
+//   - dummyLog: used in `DummyLog`, true by default
 func Initialize(opts ...XOptFunc) {
-	opt := XOpts{}
+	opt := XOpts{color: true, dummyLog: true}
 	bindXOpts(&opt, opts...)
 	ctrl = &opt
 	ToggleColor(ctrl.color)
