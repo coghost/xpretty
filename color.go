@@ -15,6 +15,8 @@ var White = color.New(color.FgHiWhite, color.Bold).SprintFunc()
 var Whitef = color.New(color.FgHiWhite, color.Bold).SprintfFunc()
 var Yellow = color.New(color.FgYellow, color.Bold).SprintFunc()
 var Yellowf = color.New(color.FgYellow, color.Bold).SprintfFunc()
+var Cyan = color.New(color.FgCyan, color.Bold).SprintFunc()
+var Cyanf = color.New(color.FgCyan, color.Bold).SprintfFunc()
 
 var Warnf = color.New(color.FgYellow, color.BgBlack, color.Bold, color.Italic).SprintfFunc()
 

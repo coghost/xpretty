@@ -7,7 +7,7 @@ require (
 	github.com/fatih/color v1.13.0
 	github.com/goccy/go-yaml v1.9.5
 	github.com/mattn/go-colorable v0.1.13
-	github.com/stretchr/testify v1.8.0
+	github.com/stretchr/testify v1.8.1
 	github.com/tidwall/gjson v1.14.3
 )
 
