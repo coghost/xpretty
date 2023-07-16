@@ -16,7 +16,7 @@ func TestDummy(t *testing.T) {
 }
 
 func (s *DummySuite) SetupSuite() {
-	xpretty.Initialize(xpretty.WithColor(false), xpretty.WithDummyLog(true))
+	xpretty.Initialize(xpretty.WithNoColor(false), xpretty.WithDummyLog(true))
 }
 
 func (s *DummySuite) TearDownSuite() {

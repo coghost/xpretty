@@ -32,6 +32,10 @@ func DummyErrorLog(msg ...interface{}) {
 
 // Caller wraps runtime.Caller and returns file and line number information
 //
+// skip:
+//   - 0: Caller
+//   - 1: is where Caller is called
+//
 // Returns: filename, linenum
 func Caller(skip int) (string, int) {
 	pc, file, l, _ := runtime.Caller(skip)

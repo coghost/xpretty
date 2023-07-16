@@ -21,3 +21,15 @@ func PrettyJson(rawJson string, opts ...PrettyOptFunc) error {
 	fmt.Println(string(s))
 	return e
 }
+
+func PrettyMap(obj map[string]interface{}, opts ...PrettyOptFunc) error {
+	opt := PrettyOpts{indent: 2}
+	bindPrettyOpts(&opt, opts...)
+
+	f := colorjson.NewFormatter()
+	f.Indent = opt.indent
+
+	s, _ := f.Marshal(obj)
+	fmt.Println(string(s))
+	return nil
+}

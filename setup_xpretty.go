@@ -1,7 +1,7 @@
 package xpretty
 
 type XOpts struct {
-	color    bool
+	noColor  bool
 	dummyLog bool
 }
 
@@ -19,9 +19,9 @@ func WithDummyLog(b bool) XOptFunc {
 	}
 }
 
-func WithColor(b bool) XOptFunc {
+func WithNoColor(b bool) XOptFunc {
 	return func(o *XOpts) {
-		o.color = b
+		o.noColor = b
 	}
 }
 
@@ -31,8 +31,16 @@ var ctrl = &XOpts{}
 //   - color: used for `terminal vivid output`, true by default
 //   - dummyLog: used in `DummyLog`, true by default
 func Initialize(opts ...XOptFunc) {
-	opt := XOpts{color: true, dummyLog: true}
+	opt := XOpts{noColor: true, dummyLog: true}
 	bindXOpts(&opt, opts...)
 	ctrl = &opt
-	ToggleColor(ctrl.color)
+	SetNoColor(ctrl.noColor)
+}
+
+func InitializeWithColor(opts ...XOptFunc) {
+	opt := XOpts{noColor: false, dummyLog: true}
+	bindXOpts(&opt, opts...)
+	ctrl = &opt
+
+	SetNoColor(false)
 }
