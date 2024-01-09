@@ -5,6 +5,8 @@ import (
 	"runtime"
 	"strings"
 	"time"
+
+	"github.com/gookit/goutil/dump"
 )
 
 func DLog(skip int, cfn func(a ...interface{}) string, msg ...interface{}) {
@@ -61,4 +63,58 @@ func anyJoin(sep string, args ...interface{}) string {
 
 func nowAsStr() string {
 	return time.Now().Format("15:04:05")
+}
+
+// DumpCallerStack
+//
+// print the caller tree
+func DumpCallerWithKey(args ...string) {
+	cont := ""
+	if len(args) > 0 {
+		cont = args[0]
+	}
+	start := 2
+	for {
+		fn, line := Caller(start)
+		if cont == "" || strings.HasPrefix(fn, cont) {
+			if line != 0 {
+				fmt.Printf("%s%v: %v\n", strings.Repeat(" ", start*2), fn, line)
+			}
+		}
+		if fn == "" {
+			break
+		}
+
+		start += 1
+		if start > 128 {
+			break
+		}
+	}
+
+	fmt.Println("end with", start)
+}
+
+func DumpCallerStack() {
+	var buf [4096]byte
+	n := runtime.Stack(buf[:], false)
+	dump.P(string(buf[:n]))
+}
+
+func GetCallerStack() string {
+	var buf [4096]byte
+	n := runtime.Stack(buf[:], false)
+	return string(buf[:n])
+}
+
+func RecoverAndDumpOnly() {
+	if r := recover(); r != nil {
+		DumpCallerStack()
+		dump.P(r)
+	}
+}
+
+func RecoverWithCb(cb func()) {
+	if r := recover(); r != nil {
+		cb()
+	}
 }

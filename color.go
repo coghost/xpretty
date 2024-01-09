@@ -10,6 +10,15 @@ var (
 )
 
 var (
+	RedPrintln    = color.New(color.FgRed, color.Bold).PrintlnFunc()
+	CyanPrintln   = color.New(color.FgCyan, color.Bold).PrintlnFunc()
+	YellowPrintln = color.New(color.FgYellow, color.Bold).PrintlnFunc()
+	GreenPrintln  = color.New(color.FgGreen, color.Bold).PrintlnFunc()
+)
+
+var Warn = color.New(color.FgYellow, color.BgBlack, color.Bold, color.Italic)
+
+var (
 	Red     = color.New(color.FgRed, color.Bold).SprintFunc()
 	Redf    = color.New(color.FgRed, color.Bold).SprintfFunc()
 	Green   = color.New(color.FgGreen, color.Bold).SprintFunc()
