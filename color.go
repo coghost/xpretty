@@ -1,6 +1,10 @@
 package xpretty
 
-import "github.com/fatih/color"
+import (
+	"fmt"
+
+	"github.com/fatih/color"
+)
 
 var (
 	RedPrintf    = color.New(color.FgRed, color.Bold).PrintfFunc()
@@ -14,6 +18,7 @@ var (
 	CyanPrintln   = color.New(color.FgCyan, color.Bold).PrintlnFunc()
 	YellowPrintln = color.New(color.FgYellow, color.Bold).PrintlnFunc()
 	GreenPrintln  = color.New(color.FgGreen, color.Bold).PrintlnFunc()
+	Println       = fmt.Println
 )
 
 var Warn = color.New(color.FgYellow, color.BgBlack, color.Bold, color.Italic)

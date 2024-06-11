@@ -45,3 +45,20 @@ func (s *DummySuite) TestDumbLog() {
 		s.True(true)
 	}
 }
+
+func (s *DummySuite) TestPrettyStruct() {
+	type Md struct {
+		Name string `json:"name"`
+		Age  int    `json:"age"`
+		Sex  bool   `json:"sex"`
+	}
+
+	m := &Md{
+		Name: "Jhon",
+		Age:  20,
+		Sex:  true,
+	}
+
+	err := xpretty.PrettyStruct(m)
+	s.Nil(err)
+}
