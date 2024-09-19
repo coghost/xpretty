@@ -2,6 +2,7 @@ package xpretty
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/fatih/color"
 )
@@ -51,4 +52,14 @@ var (
 
 func SetNoColor(b bool) {
 	color.NoColor = b
+}
+
+func PrintToStdout(format string, a ...any) {
+	layout := fmt.Sprintf("\033[32m%v\033[0m", format)
+	fmt.Fprintf(os.Stdout, layout, a...)
+}
+
+func PrintToStderr(format string, a ...any) {
+	layout := fmt.Sprintf("\033[31m%v\033[0m", format)
+	fmt.Fprintf(os.Stderr, layout, a...)
 }
